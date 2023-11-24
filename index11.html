@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>D3 Tutorial</title>
+        <script type="text/javascript" src="https://d3js.org/d3.v7.js"></script>
+    </head>
+    <title>Lesson 11 - Paths</title>
+    <body>
+        
+
+        <script>
+            // Create SVG element
+            let canvas = d3.select("body")
+                    .append("svg")
+                    .attr("width", 500)
+                    .attr("height", 500);
+
+            let data = [
+                {x: 10, y: 20},
+                {x: 40, y: 60},
+                {x: 50, y: 70}
+            ];
+
+            // Append Group element to SVG canvas & Move Group element over
+            let group = canvas.append("g")
+                .attr("tranfsorm", "translate(100, 100)");
+            
+            // D3v7 uses D3.line() instead of D3.svg.line() v4
+            // create svg path definition from data
+            let line = d3.line()
+                .x(function (d) { return d.x; })
+                .y(function (d) { return d.y; });
+
+            // Select empty Path, Bind data & append svg path with attributes
+            group.selectAll("path")
+                .data([data])
+                .enter()
+                .append("path")
+                .attr("d", line)
+                .attr("fill", "none")
+                .attr("stroke", "#000")
+                .attr("stroke-width", 10);             
+            
+        </script>
+        
+    </body>
+</html>

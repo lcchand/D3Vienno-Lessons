@@ -12,7 +12,7 @@
 
         <script>
             // d3.json or d3.csv is actually a Promise that must be followed by .then(
-            d3.csv("./data/mydata.csv").then(function (data) { 
+            d3.json("./data/mydata.json").then(function (data) { 
                 //console.log(data);
                 let canvas = d3.select("body")
                     .append("svg")
